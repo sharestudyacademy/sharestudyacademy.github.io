@@ -1,19 +1,58 @@
 <!-- begin post -->
 {% assign author = site.authors[post.author] %}
-<div class="card">
-    <a href="{{ post.url | absolute_url }}">
-        {% if post.image %} <img class="rounded mb-4" src="{{ site.baseurl }}/{{ post.image }}" alt="{{ post.title }}"> {% endif %}
-    </a>
-    <div class="card-block">
-        <h2 class="card-title h4 serif-font"><a href="{{ post.url | absolute_url }}">{{ post.title }}</a></h2>
-        <p class="card-text text-muted">{{ post.excerpt | strip_html | truncatewords:15 }}</p>
-        <div class="metafooter">
-            <div class="wrapfooter small d-flex align-items-center">
-                <span class="author-meta">
-                By  <span class="post-name"> {% if post.author %}{{ author.display_name }}{% else %}{{ site.author }}{% endif %}, </span>             
-                on <span class="post-date">{{ post.date | date_to_string }}</span>
-                </span>               
-                <div class="clearfix"></div>
+{% assign words = post.content | number_of_words %}
+{% if words < 360 %}
+  {% assign read_time = "1 min read" %}
+{% else %}
+  {% assign read_time = words | divided_by:180 | append: " min read" %}
+{% endif %}
+
+<div class="post-box" data-post-url="{{ post.url | absolute_url }}">
+    <div class="card h-100">
+
+        {% if post.image %}
+        <div class="card-img-container">
+            <a href="{{ post.url | absolute_url }}">
+                <img class="img-fluid rounded-top" src="{{ site.baseurl }}/{{ post.image }}" alt="{{ post.title }}">
+            </a>
+            <div class="card-img-overlay">
+                <span class="btn btn-sm btn-pill btn-light">{{ post.date | date: "%b %d, %Y" }}</span>
+                {% for tag in post.tags limit:1 %}
+                <a href="{{ site.baseurl }}/tags#{{ tag | slugify }}" class="btn btn-sm btn-pill btn-primary">{{ tag }}</a>
+                {% endfor %}
+            </div>
+            {% assign post_date = post.date | date: '%s' %}
+            {% assign three_days_ago = "now" | date: '%s' | minus: 259200 %}
+            {% if post_date > three_days_ago %}
+            <span class="badge bg-success new-badge">New</span>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <div class="card-body">
+            <h2 class="card-title h4 serif-font">
+                <a href="{{ post.url | absolute_url }}">{{ post.title }}</a>
+            </h2>
+            <p class="card-text text-muted small">
+                {{ post.excerpt | strip_html | truncatewords:15 }}
+            </p>
+        </div>
+
+        <div class="card-footer bg-white border-0 pt-0">
+            <div class="metafooter">
+                <div class="wrapfooter small d-flex align-items-center justify-content-between">
+                    <div class="author-meta d-flex align-items-center">
+                        {% if author.avatar %}
+                        <img class="author-thumb" src="{{site.baseurl}}/{{ author.avatar }}" alt="{{ author.display_name }}">
+                        {% endif %}
+                        <span class="post-name ms-2">{% if post.author %}{{ author.display_name }}{% else %}{{ site.author }}{% endif %}</span>
+                    </div>
+                    <div class="post-meta d-flex align-items-center">
+                        <span class="post-read-time me-2">{{ read_time }}</span>
+                        <a href="#disqus_thread" class="text-muted me-2"><i class="far fa-comment"></i> <span class="disqus-comment-count" data-disqus-url="{{ post.url | absolute_url }}">0</span></a>
+                        <span class="bookmark-icon" data-post-id="{{ post.url | slugify }}"><i class="far fa-bookmark"></i></span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
