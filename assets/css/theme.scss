@@ -613,32 +613,3 @@ span.navigation:before {
     transition: all.3s;
     opacity:.8;
 }
-
-/* New Post Badge
-================================================== */
-.new-badge {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    z-index: 1;
-}
-
-/* Social Share Icons
-================================================== */
-.social-share a {
-    color: #6c757d;
-    transition: color 0.2s;
-}
-.social-share a:hover {
-    color: var(--bs-primary);
-}
-
-/* Bookmark Icon Animation
-================================================== */
-.bookmark-icon i {
-    transition: all 0.2s ease-in-out;
-}
-.bookmark-icon.bookmarked i {
-    color: var(--bs-primary);
-    transform: scale(1.2);
-}
