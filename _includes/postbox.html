@@ -1,34 +1,21 @@
+<!-- begin post -->
 {% assign author = site.authors[post.author] %}
-{% assign words = post.content | number_of_words %}
-{% if words < 360 %}
-  {% assign read_time = "1 min read" %}
-{% else %}
-  {% assign read_time = words | divided_by:180 | append: " min read" %}
-{% endif %}
-
-<div class="card h-100 shadow-sm">
+<div class="card">
     <a href="{{ post.url | absolute_url }}">
-        {% if post.image %} <img class="rounded-top" src="{{ site.baseurl }}/{{ post.image }}" alt="{{ post.title }}"> {% endif %}
+        {% if post.image %} <img class="rounded mb-4" src="{{ site.baseurl }}/{{ post.image }}" alt="{{ post.title }}"> {% endif %}
     </a>
-    <div class="card-body">
+    <div class="card-block">
         <h2 class="card-title h4 serif-font"><a href="{{ post.url | absolute_url }}">{{ post.title }}</a></h2>
-        <p class="card-text text-muted small">{{ post.excerpt | strip_html | truncatewords:15 }}</p>
-    </div>
-    <div class="card-footer bg-white border-0 pt-0">
+        <p class="card-text text-muted">{{ post.excerpt | strip_html | truncatewords:15 }}</p>
         <div class="metafooter">
-            <div class="wrapfooter small d-flex align-items-center justify-content-between">
-                <div class="author-meta d-flex align-items-center">
-                    {% if author.avatar %}
-                    <img class="author-thumb" src="{{site.baseurl}}/{{ author.avatar }}" alt="{{ author.display_name }}">
-                    {% endif %}
-                    <span class="post-name ms-2">{% if post.author %}{{ author.display_name }}{% else %}{{ site.author }}{% endif %}</span>
-                </div>
-                <div class="post-meta d-flex align-items-center">
-                    <span class="post-read-time me-2">{{ read_time }}</span>
-                    <a href="{{ post.url | absolute_url }}#disqus_thread" class="text-muted me-2"><i class="far fa-comment"></i> <span class="disqus-comment-count" data-disqus-url="{{ post.url | absolute_url }}">0</span></a>
-                    <span class="bookmark-icon" data-post-id="{{ post.url | slugify }}"><i class="far fa-bookmark"></i></span>
-                </div>
+            <div class="wrapfooter small d-flex align-items-center">
+                <span class="author-meta">
+                By  <span class="post-name"> {% if post.author %}{{ author.display_name }}{% else %}{{ site.author }}{% endif %}, </span>             
+                on <span class="post-date">{{ post.date | date_to_string }}</span>
+                </span>               
+                <div class="clearfix"></div>
             </div>
         </div>
     </div>
 </div>
+<!-- end post -->
