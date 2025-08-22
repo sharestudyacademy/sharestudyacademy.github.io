@@ -1,41 +1,62 @@
+(function() {
+  "use strict";
 
-      (function ($) {"use strict";
-      
-      $(function () {
-        var header = $(".start-style");
-        $(window).scroll(function () {
-          var scroll = $(window).scrollTop();
-    
-          if (scroll >= 10) {
-            header.removeClass('start-style').addClass("scroll-on");
-          } else {
-            header.removeClass("scroll-on").addClass('start-style');
-          }
-        });
-      });
-    
-      //Animation
-    
-      $(document).ready(function () {
-        $('body.hero-anime').removeClass('hero-anime');
-      });
-    
-      //Menu On Hover
-    
-      $('body').on('mouseenter mouseleave', '.nav-item', function (e) {
-        if ($(window).width() > 750) {
-          var _d = $(e.target).closest('.nav-item');_d.addClass('show');
-          setTimeout(function () {
-            _d[_d.is(':hover') ? 'addClass' : 'removeClass']('show');
-          }, 1);
+  /**
+   * Waits for the document to be fully loaded before running scripts.
+   */
+  document.addEventListener('DOMContentLoaded', function() {
+
+    // -----------------------------------------
+    // 1. Header scroll effect
+    // -----------------------------------------
+    const header = document.querySelector('.start-style');
+    if (header) {
+      window.addEventListener('scroll', function() {
+        if (window.scrollY >= 10) {
+          header.classList.add('scroll-on');
+          header.classList.remove('start-style');
+        } else {
+          header.classList.add('start-style');
+          header.classList.remove('scroll-on');
         }
       });
-    
-    
-    
-    })(jQuery);
+    }
 
-// Blank Target External Links
-$(document.links).filter(function() {
-return this.hostname != window.location.hostname;
-}).attr('target', '_blank');
+    // -----------------------------------------
+    // 2. Animation class removal
+    // -----------------------------------------
+    const body = document.body;
+    if (body.classList.contains('hero-anime')) {
+      body.classList.remove('hero-anime');
+    }
+
+    // -----------------------------------------
+    // 3. Menu on hover for desktop view
+    // -----------------------------------------
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(function(item) {
+      item.addEventListener('mouseenter', function() {
+        if (window.innerWidth > 750) {
+          this.classList.add('show');
+        }
+      });
+      item.addEventListener('mouseleave', function() {
+        if (window.innerWidth > 750) {
+          this.classList.remove('show');
+        }
+      });
+    });
+
+  });
+
+  // -----------------------------------------
+  // 4. Make all external links open in a new tab
+  // -----------------------------------------
+  const allLinks = document.links;
+  for (let i = 0; i < allLinks.length; i++) {
+    if (allLinks[i].hostname !== window.location.hostname) {
+      allLinks[i].target = '_blank';
+    }
+  }
+
+})();
