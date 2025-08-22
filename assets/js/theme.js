@@ -5,7 +5,7 @@
    * Waits for the document to be fully loaded before running scripts.
    */
   document.addEventListener('DOMContentLoaded', function() {
-
+ 
     // -----------------------------------------
     // 1. Header scroll effect
     // -----------------------------------------
