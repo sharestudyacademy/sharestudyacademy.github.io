@@ -14,18 +14,6 @@
 <!-- custom CSS - Remove this if you don't use it or choose to customize the stylesheet with sass-->
 <link href="{{ site.baseurl }}/assets/css/custom.css" rel="stylesheet">
 <!-- custom CSS end-->
-    
-{% if jekyll.environment == "production" %}       
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{site.ganalytics}}"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '{{site.ganalytics}}');
-</script>
-{% endif %}
-   
 </head>   
     
 {% capture layout %}{% if page.layout %}layout-{{ page.layout }}{% endif %}{% endcapture %}
@@ -125,7 +113,25 @@ gtag('config', '{{site.ganalytics}}');
 
 <!-- JavaScript
 ================================================== -->    
-<script src="{{ site.baseurl }}/assets/js/theme.js"></script>    
+<script src="{{ site.baseurl }}/assets/js/theme.js"></script>   
+<script src="{{ site.baseurl }}/assets/js/custom.js"></script>   
+
+{% if jekyll.environment == "production" %}
+<script>
+  window.addEventListener('load', function() {
+    // Load Google Analytics only in production
+    loadAsset('https://www.googletagmanager.com/gtag/js?id={{site.ganalytics}}', 'js', 'head');
+    loadInlineScript(`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{site.ganalytics}}');
+    `, 'head');
+  });
+</script>
+{% endif %}
+
+</body>
     
 </body>
     
