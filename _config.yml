@@ -1,11 +1,11 @@
-title: "Affiliates"
-email: wowthemesnet@gmail.com
+title: "Share Study Blog"
+email: blog@sharestudy.in
 timezone: UTC
 baseurl: ""
 permalink: "/:title/"
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/favicon.ico'
-author: Sal
+author: Zak
 paginate: 30
 disqus: 'demowebsite'
 locale: en_us
@@ -24,13 +24,13 @@ ganalytics: UA-113961478-1
 
 # Authors
 authors:
-  sal:
-    name: Sal
-    display_name: Sal
+  zak:
+    name: Zakir Ayoub
+    display_name: Zakir Ayoub
     avatar: 'assets/images/sal.png'
-    email: wowthemesnet@gmail.com
-    web: https://www.wowthemes.net/category/jekyll-themes/
-    twitter: https://twitter.com/wowthemesnet
+    email: author@sharestudy.in
+    web: https://blog.sharestudy.in
+    twitter: https://twitter.com/imzakirayoub
     description: "Author of Affiliates, a template available for WordPress, HTML, Ghost and Jekyll. You are currently previewing Jekyll template demo."
   john:
     name: John
@@ -43,9 +43,7 @@ authors:
 
 # Social
 social:
-  instagram: https://www.instagram.com/bootstrapstarter/
-  facebook: https://www.facebook.com/bootstrapstartercom-346329609045284
-  twitter: https://twitter.com/bstartercom
+  whatsapp: https://twitter.com/bstartercom
 
 # Plugins
 plugins: 
