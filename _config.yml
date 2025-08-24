@@ -31,15 +31,7 @@ authors:
     email: author@sharestudy.in
     web: https://blog.sharestudy.in
     twitter: https://twitter.com/imzakirayoub
-    description: "Author of Affiliates, a template available for WordPress, HTML, Ghost and Jekyll. You are currently previewing Jekyll template demo."
-  john:
-    name: John
-    display_name: John
-    avatar: 'assets/images/john.png'
-    email: wowthemesnet@gmail.com
-    web: https://www.wowthemes.net/category/jekyll-themes/
-    twitter: https://twitter.com/wowthemesnet
-    description: "This is the author box. Write a short description of the author here. You are currently previewing Affiliates theme demo, a Jekyll template compatible with Github pages."
+    description: "Founder of Share Study and primary author of the Share Study Blog. Passionate about education, technology, and creating resources that empower students to achieve excellence."
 
 # Social
 social:
