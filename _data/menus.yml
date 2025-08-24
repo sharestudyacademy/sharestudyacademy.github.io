@@ -8,11 +8,7 @@ topmenu:
   
 - title: Contact
   url: "contact/"
-
-- title: WhatsApp 
-  url: https://api.whatsapp.com/send?phone=919103189498&text=Please%20add%20me%20in%20the%20WhatsApp%20group.
   class: "ml-2 btn btn-dark text-white px-3"
-  external: true
 
 # Footer Menu
 footermenu:
@@ -25,8 +21,4 @@ footermenu:
 
 - title: Contact
   url: "contact/"
-
-- title: WhatsApp 
-  url: https://api.whatsapp.com/send?phone=919103189498&text=Please%20add%20me%20in%20the%20WhatsApp%20group.
   class: "ml-2 btn btn-dark text-white px-3"
-  external: true
